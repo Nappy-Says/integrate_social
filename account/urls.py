@@ -1,9 +1,9 @@
 from django.urls import path
 
-from account.controllers.profile import Profile
+from account.controllers.profile import profile
 
 
 
 urlpatterns = [
-    path('asd/', Profile, name='home_url_name'),
+    path('asd/', profile, name='home_url_name'),
 ]

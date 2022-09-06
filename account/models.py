@@ -9,8 +9,8 @@ from social_network.settings import PATH_MEDIA_DIRECTORY
 
 # A model whose fields identify a user in an integrated social network.
 # Nothing new, everything is quite primitive
-class User(models.Model):
-    __tablename__ = "users"
+class Userr(models.Model):
+    # __tablename__ = "users"
 
     telegram_id = models.IntegerField("Telegram ID", unique=True)
     created_at = models.DateTimeField(default=datetime.now, editable=False)
@@ -24,15 +24,13 @@ class User(models.Model):
     # Assign created_at field new time
     def save(self, *args, **kwargs):
         self.modified = datetime.now()
-        return super(User, self).save(*args, **kwargs)
+        return super(Userr, self).save(*args, **kwargs)
 
 
 class Account(models.Model):
-    __tablename__ = "accounts"
+    # __tablename__ = "accounts"
 
-    user = models.ForeignKey(
-        verbose_name='Attitude towards the user', 
-        to=User, related_name='user', 
-        to_field='telegram_id', on_delete=models.DO_NOTHING,
+    user = models.ForeignKey(Userr, related_name='users',
+        on_delete=models.DO_NOTHING, 
     )
     # subscription = models.ForeignKey()
